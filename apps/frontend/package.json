@@ -2,7 +2,14 @@
   "name": "@bible2ppt-web/frontend",
   "version": "0.0.1",
   "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
   "dependencies": {
-    "pptxgenjs": "^4.0.0"
+    "next": "^15.3.3",
+    "pptxgenjs": "^4.0.0",
+    "react-dom": "^19.1.0"
   }
 }
