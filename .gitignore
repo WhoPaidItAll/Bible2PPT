@@ -48,3 +48,7 @@ vitest.config.*.timestamp*
 test-output
 
 /generated/prisma
+frontend.log
+frontend.log
+frontend.log
+frontend.log
