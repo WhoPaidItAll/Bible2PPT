@@ -1,4 +1,6 @@
 from typing import Dict
+import os
+from pptx import Presentation
 # Import necessary modules, e.g., from models import Build  # Adjust based on actual models
 # from services.template_service import TemplateService  # If dependency
 
@@ -11,9 +13,7 @@ class BuildService:
         # Placeholder: Build and generate PPT file
         return "Generated PPT file path: sample.pptx"  # Example return
     
-    import os
-    from pptx import Presentation  # Correct import for python-pptx package
-    from typing import Dict
+    
 
     def process_build_data(self, build_data: Dict) -> Dict:
         try:

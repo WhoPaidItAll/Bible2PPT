@@ -1,4 +1,3 @@
-
 import sys
 import pytest
 from models import Base  # Import for database setup
@@ -10,14 +9,13 @@ Base.metadata.create_all(engine)  # Create all tables
 sys.path.append('/workspace')  # Explicitly add workspace to sys.path
 from bible2ppt_python.services.bible_service import BibleService  # Use absolute import
 
-
 # Mock dependencies for testing
 @pytest.fixture
 def bible_service():
     return BibleService(db_url="sqlite:///:memory:", bible_index_service=None)
 
 def test_find_bible(bible_service):
-Base.metadata.create_all(engine)  # Ensure tables are created for testing
+    Base.metadata.create_all(engine)  # Ensure tables are created for testing
     result = bible_service.find_bible(1)  # Test with sample ID
     assert result is None  # Expect None if no data, based on current implementation
 

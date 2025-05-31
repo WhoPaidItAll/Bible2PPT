@@ -31,4 +31,4 @@ async def run_services():
 if __name__ == "__main__":
     from flask_cors import CORS
 CORS(app)  # Enable CORS for all origins
-app.run(host='0.0.0.0', port=0, debug=True)  # Automatically assign an available port
+app.run(host='0.0.0.0', port=50446, debug=True)  # Use specified port for accessibility  # Automatically assign an available port

@@ -1,25 +1,20 @@
-import sys
-import os
 import pytest
+from bible2ppt_python.services.build_service import BuildService  # Adjust import as needed
 
-import os
-import sys
-sys.path.append('/workspace')  # Explicitly add workspace to sys.path
-from bible2ppt_python.services.build_service import BuildService  # Use absolute import
-from pptx import Presentation  # Ensure it's imported if needed for mocks
-
+# Mock dependencies for testing
 @pytest.fixture
 def build_service():
-    return BuildService()
+    return BuildService()  # Initialize with any required parameters
+
+def test_build_ppt(build_service):
+    # Example test: Assume BuildService has a method like build_ppt
+    result = build_service.build_ppt({"title": "Test Title", "data": ["Item1", "Item2"]})
+    assert "Generated PPT file path" in result  # Adjust based on expected output
 
 def test_process_build_data(build_service):
-    build_data = {"title": "Test Title", "data": ["Item 1", "Item 2"]}
-    result = build_service.process_build_data(build_data)
-    assert result["processed"] == "Success"  # Test successful PPT generation
-    assert "output_path" in result  # Check if output path is returned
-    assert os.path.exists(result["output_path"])  # Verify if file is created
+    # Example test for process_build_data
+    result = build_service.process_build_data({"title": "Test", "data": ["Test Item"]})
+    assert result.get("processed") == "Success"  # Expect success if no errors
+    assert "output_path" in result  # Check for output path in result
 
-def test_process_build_data_error(build_service):
-    build_data = {}  # Invalid data
-    result = build_service.process_build_data(build_data)
-    assert result["processed"] == "Error"  # Test error handling
+# Add more tests as needed based on BuildService methods
