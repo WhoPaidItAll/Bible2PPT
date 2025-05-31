@@ -1,0 +1,17 @@
+[32m[Nest] 19576  - [39m05/31/2025, 3:02:39 AM [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 19576  - [39m05/31/2025, 3:02:39 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPrismaModule dependencies initialized[39m[38;5;3m +7ms[39m
+[32m[Nest] 19576  - [39m05/31/2025, 3:02:39 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 19576  - [39m05/31/2025, 3:02:39 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mBibleIndexModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 19576  - [39m05/31/2025, 3:02:39 AM [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mBibleModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 19576  - [39m05/31/2025, 3:02:39 AM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAppController {/api}:[39m[38;5;3m +3ms[39m
+[32m[Nest] 19576  - [39m05/31/2025, 3:02:39 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 19576  - [39m05/31/2025, 3:02:39 AM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mBibleIndexController {/api/api/bible-index}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 19576  - [39m05/31/2025, 3:02:39 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/api/bible-index/book/:id, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 19576  - [39m05/31/2025, 3:02:39 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/api/bible-index/book/:id/name, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 19576  - [39m05/31/2025, 3:02:39 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/api/bible-index/books, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 19576  - [39m05/31/2025, 3:02:39 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/api/bible-index/book/:id/chapters, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 19576  - [39m05/31/2025, 3:02:39 AM [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mBibleController {/api/api/bible}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 19576  - [39m05/31/2025, 3:02:39 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/api/bible/chapter/:id/verses, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 19576  - [39m05/31/2025, 3:02:39 AM [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/api/bible/verse/:id, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 19576  - [39m05/31/2025, 3:02:39 AM [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +9ms[39m
+[32m[Nest] 19576  - [39m05/31/2025, 3:02:39 AM [32m    LOG[39m [32m🚀 Application is running on: http://localhost:57038/api[39m

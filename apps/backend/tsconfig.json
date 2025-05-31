@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "ES2015",
+    "module": "commonjs",
+    "outDir": "./dist",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "types": ["jest", "node"],
+    "baseUrl": ".",
+    "paths": {
+      "@prisma/client": ["../../../generated/prisma"]
+    }
+  },
+  "include": ["apps/backend/src/**/*.ts"],
+  "exclude": ["apps/backend/src/**/*.spec.ts", "apps/backend/src/seed.ts"]
+}

@@ -1,0 +1,8 @@
+{
+  "name": "@bible2ppt-web/frontend",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "pptxgenjs": "^4.0.0"
+  }
+}
