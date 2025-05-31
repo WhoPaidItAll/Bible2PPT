@@ -1,0 +1,13 @@
+pyproject.toml
+bible2ppt_python.egg-info/PKG-INFO
+bible2ppt_python.egg-info/SOURCES.txt
+bible2ppt_python.egg-info/dependency_links.txt
+bible2ppt_python.egg-info/requires.txt
+bible2ppt_python.egg-info/top_level.txt
+services/__init__.py
+services/bible_service.py
+services/build_service.py
+services/template_service.py
+tests/test_bible_service.py
+tests/test_build_service.py
+tests/test_template_service.py

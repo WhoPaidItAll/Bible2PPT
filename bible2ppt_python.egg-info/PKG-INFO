@@ -1,0 +1,8 @@
+Metadata-Version: 2.4
+Name: bible2ppt_python
+Version: 0.1.0
+Requires-Dist: sqlalchemy
+Requires-Dist: python-pptx
+Requires-Dist: flask
+Requires-Dist: flask-cors
+Requires-Dist: pytest

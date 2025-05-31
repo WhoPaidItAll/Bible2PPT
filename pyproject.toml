@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bible2ppt_python"
+version = "0.1.0"
+dependencies = [
+    "sqlalchemy",
+    "python-pptx",
+    "flask",
+    "flask-cors",
+    "pytest"
+]
