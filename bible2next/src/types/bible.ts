@@ -46,3 +46,18 @@ export interface PptOptions {
   titleFont?: string;
   // Add other options from original app if they map to pptxgenjs features
 }
+
+// User Settings for localStorage
+export interface UserDefaultBible {
+  dbSourceId: string;
+  sourceName: string; // For display/reference
+  dbVersionId: string;
+  versionName: string; // For display/reference
+  versionIdentifier: string; // e.g., "rvsn"
+  language: string;
+}
+
+export interface UserSettings {
+  defaultBible?: UserDefaultBible;
+  defaultPptOptions?: PptOptions; // Reuses the existing PptOptions type
+}
