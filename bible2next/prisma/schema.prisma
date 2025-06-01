@@ -1,0 +1,63 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model BibleSource {
+  id          String @id @default(cuid())
+  identifier  String @unique // e.g., "godpeople" or "goodtv"
+  name        String        // e.g., "갓피플 성경", "GoodTV 성경"
+  versions    BibleVersion[]
+}
+
+model BibleVersion {
+  id            String      @id @default(cuid())
+  sourceId      String
+  source        BibleSource @relation(fields: [sourceId], references: [id])
+  identifier    String      // e.g., "GAE" for 개역개정, "NIV" for New International Version
+  name          String      // e.g., "개역개정", "NIV"
+  language      String      // e.g., "ko", "en"
+  books         Book[]
+
+  @@unique([sourceId, identifier])
+}
+
+model Book {
+  id            String    @id @default(cuid())
+  versionId     String
+  version       BibleVersion @relation(fields: [versionId], references: [id])
+  name          String    // e.g., "창세기", "Genesis"
+  abbreviation  String    // e.g., "창", "Gen"
+  order         Int       // Order of the book in the Bible (1 for Genesis, etc.)
+  chapters      Chapter[]
+
+  @@unique([versionId, abbreviation])
+  @@index([versionId, order])
+}
+
+model Chapter {
+  id            String  @id @default(cuid())
+  bookId        String
+  book          Book    @relation(fields: [bookId], references: [id])
+  chapterNumber Int     // e.g., 1, 2, 3
+  verses        Verse[]
+
+  @@unique([bookId, chapterNumber])
+}
+
+model Verse {
+  id            String  @id @default(cuid())
+  chapterId     String
+  chapter       Chapter @relation(fields: [chapterId], references: [id])
+  verseNumber   Int     // e.g., 1, 2, 3
+  text          String
+
+  @@unique([chapterId, verseNumber])
+}
