@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { BibleSource, BibleVersion, PptOptions, SelectedBible } from '@/types/bible';
+import { BibleSource, BibleVersion, PptOptions, SelectedBible, AVAILABLE_THEMES, AVAILABLE_FONTS, ThemeName } from '@/types/bible';
 
 interface BibleSelectorPanelProps {
   sources: BibleSource[];
@@ -42,20 +42,24 @@ const BibleSelectorPanel: React.FC<BibleSelectorPanelProps> = ({
 
   const handleOptionChange = (e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>) => {
     const { name, value, type } = e.target;
-    if (type === 'checkbox') {
-        const { checked } = e.target as HTMLInputElement;
-        onPptOptionsChange({ ...pptOptions, [name]: checked });
-    } else if (type === 'number') {
-        onPptOptionsChange({ ...pptOptions, [name]: parseInt(value, 10) });
-    }
-     else {
-        onPptOptionsChange({ ...pptOptions, [name]: value });
-    }
-  };
+    let newValue: string | number | boolean | ThemeName = value; // Ensure ThemeName is possible type
 
+    if (type === 'checkbox') {
+        newValue = (e.target as HTMLInputElement).checked;
+    } else if (type === 'number') {
+        newValue = parseInt(value, 10);
+    }
+    // For themeName, ensure it's cast to ThemeName type
+    if (name === 'themeName') {
+        newValue = value as ThemeName;
+    }
+
+    onPptOptionsChange({ ...pptOptions, [name]: newValue });
+  };
 
   return (
     <div className="space-y-6">
+      {/* Source and Version Selection - remains the same */}
       <div>
         <label htmlFor="sourceSelect" className="block text-sm font-medium text-gray-700 mb-1">Bible Source:</label>
         <select
@@ -96,6 +100,7 @@ const BibleSelectorPanel: React.FC<BibleSelectorPanelProps> = ({
         Add Selected Bible to PPT List
       </button>
 
+      {/* Final Selected Bibles List - remains the same */}
       {finalSelectedBibles.length > 0 && (
         <div className="space-y-2">
           <h3 className="text-md font-medium text-gray-800">Bibles for this PPT:</h3>
@@ -114,8 +119,47 @@ const BibleSelectorPanel: React.FC<BibleSelectorPanelProps> = ({
         </div>
       )}
 
+      {/* Presentation Options - existing options + new theme/font options */}
       <div className="space-y-4 pt-4 border-t border-gray-200">
         <h3 className="text-md font-medium text-gray-800">Presentation Options:</h3>
+
+        {/* Theme Selection */}
+        <div>
+          <label htmlFor="themeName" className="block text-sm font-medium text-gray-700">Theme:</label>
+          <select name="themeName" id="themeName" value={pptOptions.themeName || 'defaultLight'} onChange={handleOptionChange}
+                  className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md shadow-sm">
+            {AVAILABLE_THEMES.map(theme => (
+              <option key={theme} value={theme}>
+                {/* Simple formatting for display name */}
+                {theme.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {/* Body Font Selection */}
+        <div>
+          <label htmlFor="bodyFont" className="block text-sm font-medium text-gray-700">Body Font:</label>
+          <select name="bodyFont" id="bodyFont" value={pptOptions.bodyFont || AVAILABLE_FONTS[0]} onChange={handleOptionChange}
+                  className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md shadow-sm">
+            {AVAILABLE_FONTS.map(font => (
+              <option key={font} value={font}>{font}</option>
+            ))}
+          </select>
+        </div>
+
+        {/* Title Font Selection */}
+        <div>
+          <label htmlFor="titleFont" className="block text-sm font-medium text-gray-700">Title Font:</label>
+          <select name="titleFont" id="titleFont" value={pptOptions.titleFont || AVAILABLE_FONTS[0]} onChange={handleOptionChange}
+                  className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md shadow-sm">
+            {AVAILABLE_FONTS.map(font => (
+              <option key={font} value={font}>{font}</option>
+            ))}
+          </select>
+        </div>
+
+        {/* Existing Options */}
         <div>
           <label htmlFor="maxLinesPerSlide" className="block text-sm font-medium text-gray-700">Max Lines Per Slide (0 for unlimited):</label>
           <input type="number" name="maxLinesPerSlide" id="maxLinesPerSlide" min="0" max="20"

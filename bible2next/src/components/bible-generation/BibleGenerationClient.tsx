@@ -24,6 +24,9 @@ const BibleGenerationClient: React.FC = () => {
   const [pptOptions, setPptOptions] = useState<PptOptions>({
     splitChaptersIntoFiles: false, maxLinesPerSlide: 0,
     showBookNameOnSlide: 'firstOfChapter', showChapterNumberOnSlide: 'firstOfChapter',
+    themeName: 'defaultLight', // Default theme
+    bodyFont: 'Arial',       // Default body font
+    titleFont: 'Arial',      // Default title font
   });
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
