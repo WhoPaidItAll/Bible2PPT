@@ -19,15 +19,7 @@ export interface Book {
   name: string;
   abbreviation: string;
   order: number;
-  chapterCount: number; // This was removed from DB Book model, but API for books might still return it if API hasn't been updated.
-  // For UI purposes, it can be useful. If API /api/bibles/[versionId]/books doesn't return it, this type will be more permissive.
-  // My version of /api/bibles/[versionId]/books route DOES NOT return chapterCount.
-  // So, components using this type for that API response should be aware it might be undefined.
-  // Let's make it optional to reflect the reality of the API I built.
-  // chapterCount?: number;
-  // The bash script provides it as non-optional. I will stick to the script for this subtask.
-  // If the API I built in previous step omits it, then there will be a type mismatch at runtime if not handled.
-  // For now, I will follow the bash script's type definition.
+  chapterCount: number;
 }
 
 export interface SelectedBible {
@@ -39,10 +31,33 @@ export interface SelectedBible {
     language: string;
 }
 
+export type ThemeName = 'defaultLight' | 'defaultDark' | 'themeBlue';
+
+export const AVAILABLE_THEMES: ThemeName[] = ['defaultLight', 'defaultDark', 'themeBlue'];
+export const AVAILABLE_FONTS: string[] = ['Arial', 'Verdana', 'Times New Roman', 'Calibri', 'Helvetica']; // Example fonts
+
 export interface PptOptions {
   splitChaptersIntoFiles: boolean;
   maxLinesPerSlide: number;
   showBookNameOnSlide: 'always' | 'firstOfChapter' | 'firstOfBook';
   showChapterNumberOnSlide: 'always' | 'firstOfChapter' | 'firstOfBook';
+  themeName?: ThemeName;
+  bodyFont?: string;
+  titleFont?: string;
   // Add other options from original app if they map to pptxgenjs features
+}
+
+// User Settings for localStorage
+export interface UserDefaultBible {
+  dbSourceId: string;
+  sourceName: string; // For display/reference
+  dbVersionId: string;
+  versionName: string; // For display/reference
+  versionIdentifier: string; // e.g., "rvsn"
+  language: string;
+}
+
+export interface UserSettings {
+  defaultBible?: UserDefaultBible;
+  defaultPptOptions?: PptOptions; // Reuses the existing PptOptions type
 }
