@@ -61,3 +61,22 @@ model Verse {
 
   @@unique([chapterId, verseNumber])
 }
+
+// Enum for Job Status
+enum JobStatus {
+  COMPLETED
+  FAILED
+}
+
+model JobHistory {
+  id                String    @id @default(cuid())
+  createdAt         DateTime  @default(now())
+  queryString       String
+  bibleVersionsUsed Json      // Store array of {dbVersionId, versionName, sourceName}
+  optionsUsed       Json      // Store PptOptions object
+  status            JobStatus
+  outputFilename    String?   // Optional: might not exist if job failed before file generation
+  errorMessage      String?   // Optional: only if status is FAILED
+
+  @@index([createdAt])
+}
